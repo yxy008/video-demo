@@ -1,16 +1,14 @@
 package com.yxy.util;
 
 import com.yxy.constants.ToolConstant;
-import org.apache.commons.codec.digest.DigestUtils;
+import com.yxy.constants.VideoTypeConstant;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 视频视频转码工具类
@@ -20,32 +18,6 @@ import java.util.Map;
 public class ConverVideoUtils {
 
     public static final String SEPARATE = "/";
-
-    private static final  String AVI_TYPE = "avi";
-
-    private static final  String MPG_TYPE = "mpg";
-
-    private static final  String WMV_TYPE = "wmv";
-
-    private static final  String GP_TYPE = "3gp";
-
-    private static final  String MOV_TYPE = "mov";
-
-    private static final  String MPFORE_TYPE = "mp4";
-
-    private static final  String ASF_TYPE = "asf";
-
-    private static final  String ASX_TYPE = "asx";
-
-    private static final  String FLV_TYPE = "flv";
-
-    private static final  String WMVNINE_TYPE = "wmv9";
-
-    private static final  String RM_TYPE = "rm";
-
-    private static final  String RMVB_TYPE = "rmvb";
-
-    private static final String PROCESS = "process";
 
     /**
      * 实际转换视频格式的方法
@@ -88,32 +60,32 @@ public class ConverVideoUtils {
     private static int checkContentType(String sourceVideoPath) {
         String type = sourceVideoPath.substring(sourceVideoPath.lastIndexOf(".") + 1).toLowerCase();
         // ffmpeg能解析的格式：（asx，asf，mpg，wmv，3gp，mp4，mov，avi，flv等）
-        if (type.equals(AVI_TYPE)) {
+        if (type.equals(VideoTypeConstant.AVI_TYPE)) {
             return 0;
-        } else if (type.equals(MPG_TYPE)) {
+        } else if (type.equals(VideoTypeConstant.MPG_TYPE)) {
             return 0;
-        } else if (StringUtils.equals(WMV_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.WMV_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(GP_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.GP_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(MOV_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.MOV_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(MPFORE_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.MPFORE_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(ASF_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.ASF_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(ASX_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.ASX_TYPE, type)) {
             return 0;
-        } else if (StringUtils.equals(FLV_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.FLV_TYPE, type)) {
             return 0;
         }
         // 对ffmpeg无法解析的文件格式(wmv9，rm，rmvb等),
         // 可以先用别的工具（mencoder）转换为avi(ffmpeg能解析的)格式.
-        else if (StringUtils.equals(WMVNINE_TYPE, type)) {
+        else if (StringUtils.equals(VideoTypeConstant.WMVNINE_TYPE, type)) {
             return 1;
-        } else if (StringUtils.equals(RM_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.RM_TYPE, type)) {
             return 1;
-        } else if (StringUtils.equals(RMVB_TYPE, type)) {
+        } else if (StringUtils.equals(VideoTypeConstant.RMVB_TYPE, type)) {
             return 1;
         } else {
 

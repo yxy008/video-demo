@@ -1,6 +1,5 @@
 package com.yxy.service;
 
-import com.yxy.constants.ToolConstant;
 import com.yxy.util.ConverVideoUtils;
 import com.yxy.util.VideoHandleUtil;
 import com.yxy.util.VideoUtil;
@@ -31,21 +30,6 @@ public class VideoHandleService {
         }
 
         return imageNameList;
-    }
-
-    public String videoTranscoding(String srcPath, String destPath) throws Exception {
-        File fi = new File(srcPath);
-        String fileName = fi.getName();
-        if (VideoUtil.isDir(destPath)) {
-            String fileRealName = fileName.substring(0, fileName.lastIndexOf("."));
-            destPath = destPath + "/" + fileRealName + ToolConstant.TARGETEXTENSION;
-        }
-        if (!destPath.contains(ToolConstant.TARGETEXTENSION)) {
-            destPath = destPath + ToolConstant.TARGETEXTENSION;
-//            videoTranscode.setDesPath(destPath);
-//            videoTranscode.setRealDesPath(rootPath + destPath);
-        }
-        return null;
     }
 
     /**
